@@ -1,4 +1,4 @@
-//set up appwrite connection
+//set up appwrite consts
 const client = new Client();
 
 client
@@ -8,16 +8,81 @@ client
 const account = new Account(client);
 const databases = new Databases(client)
 
-//add message listener from popup, initialize from localStorage
+//add fixed overlay to DOM
+const overlay = document.createElement('aside');
+overlay.id = 'overlay';
+overlay.innerHTML = 
+    `<input type="text" id="nameInput">
+    <h2 id="setName">set name</h2>
+    <ul id="activityList"></ul>`;
+document.querySelector('main').appendChild(overlay);
+
+//DOM overlay selectors
+const nameInput = document.querySelector('#nameInput');
+const setName = document.querySelector('#setName');
+const activtyList = document.querySelector('#activityList');
+
+//initialize username from localStorage if exists
 let username;
 if (localStorage.getItem("username")) {
     username = localStorage.getItem("username");
+    nameInput.value = username;
 }
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    username = message;
-    localStorage.setItem("username", username);
-    console.log(message);
-});
+
+//set username event listener
+setName.addEventListener('click', setUsername);
+
+function setUsername() {
+    if (nameInput.value) {
+        username = nameInput.value;
+        localStorage.setItem("username", username);
+    }
+}
+
+//grab existing actions from DB & append to DOM
+databases.listDocuments(
+    "67b125c20014e1f66505",
+    "67b125fb00368bb996e0",
+    [
+        Query.orderDesc('$createdAt'),    
+        Query.limit(10),
+    ]
+)
+    .then(function (response) {
+        console.log(response);
+        response.documents.forEach(doc => {
+            const li = document.createElement('li');
+            li.innerHTML = `${doc.name} ${doc.action}, ${doc.likes.length} likes | <span><3</span>`;
+            //add like functionality to <3
+            const like = li.querySelector("span");
+            like.id = doc['$id'];
+            like.addEventListener("click", likeActivity);
+            activityList.appendChild(li);
+        })
+    })
+
+//like activity function
+async function likeActivity() {
+    console.log(this);
+    //get relevant document by ID & store likes array
+    const doc = await databases.getDocument(
+        '67b125c20014e1f66505', // databaseId
+        '67b125fb00368bb996e0', // collectionId
+        `${this.id}`, // documentId
+    );
+    const likes = doc.likes;
+    //add new like to array
+    likes.push(localStorage.getItem("username"));
+    console.log(likes);
+    
+    //update document with updated array
+    const result = await databases.updateDocument(
+        '67b125c20014e1f66505', // databaseId
+        '67b125fb00368bb996e0', // collectionId
+        `${this.id}`, // documentId
+        {"likes": likes}, // data (optional)
+    );
+}
 
 //add event listener on checkboxes, callback adding doc to database
 //adds to hw checkboxes + class 'watched' checkboxes
@@ -55,7 +120,7 @@ async function addHwActivity() {
 
 //add class activity to database
 async function addClassActivity() {
-	if (this.checked) {
+    if (this.checked) {
         try {
             const greatGrandparent = this.parentElement.parentElement.parentElement;
             const classNumber = greatGrandparent.querySelector('h3').innerText;
@@ -79,3 +144,15 @@ async function addClassActivity() {
         }
     }
 }
+
+/*
+GARBAGE CODE
+
+//listen for username from extension popup
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    username = message;
+    localStorage.setItem("username", username);
+    console.log(message);
+});
+*/
