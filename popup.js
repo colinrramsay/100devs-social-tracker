@@ -1,3 +1,6 @@
+//this code is no longer in use, but I'm leaving it in in case
+//delete in final build
+
 //establish appwrite consts
 const client = new Client();
 

@@ -1,6 +1,11 @@
 #overlay {
     background: white;
     position: fixed;
-    top: 200px;
-    left: 50px;
+    bottom: 0px;
+    left: 0px;
+    padding: 0 0 25px 25px;
+}
+
+.hidden {
+    display: none;
 }
