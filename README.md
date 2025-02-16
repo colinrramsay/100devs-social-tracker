@@ -30,3 +30,4 @@ This extension is currently unfinished and hacked together with a lot of room fo
 4. Personal activity feed showing individual likes of user's own updates, filtered by username
 5. login/authentication functionality
 6. db permissions to prevent miswriting/reading and limit abuse of api calls/document spam
+7. Make the overlay collapsible
