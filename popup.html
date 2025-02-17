@@ -3,17 +3,49 @@ delete in final build -->
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>100Devs Social Tracker</title>
-    <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-    <input type="text" id="nameInput">
-    <h2 id="setName">set name</h2>
-    <ul id="activityList"></ul>
-</body>
-<script src="node_modules/appwrite/dist/esm/sdk.js"></script>
-<script src="popup.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="popupMain" class="w-80 h-72 p-1">
+      <h1 class="text-2xl font-bold mb-2 text-sky-900 text-center">
+        100Devs Social Overlay
+      </h1>
+      <hr />
+      <h3
+        id="currentUser"
+        class="text-xl mb-4 mt-2 text-sky-900 text-center"
+      ></h3>
+      <div class="w-full max-w-xs px-8">
+        <div class="mb-2">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            Username
+          </label>
+          <div class="flex">
+            <input
+              id="usernameInput"
+              class="shadow appearance-none border w-full p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="username"
+              type="text"
+              placeholder="Username"
+            />
+            <button
+              id="setName"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded-r-lg focus:outline-none focus:shadow-outline"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="popup.js"></script>
 </html>

@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+#overlay {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  padding: 6px 12px 12px 12px;
+  @apply bg-sky-50 shadow-md rounded border;
+}
+
+#collapse {
+  @apply flex justify-between gap-1 cursor-pointer;
+}
+
+#collapseText {
+  @apply text-xl text-sky-900 font-bold;
+}
+#collapseCurrentUser {
+  margin-left: auto;
+  @apply text-sm text-green-800 font-light;
+}
+
+#latestActivity {
+  @apply flex gap-2 mt-1;
+}
+
+#feed {
+  @apply mt-1;
+}
+
+/* Activity li styling */
+.activityItem {
+  @apply flex gap-1 pb-1;
+}
+.activityItem-username {
+  @apply text-green-700;
+}
+
+.activityItem-action {
+  @apply text-sky-900;
+}
+
+.activityItem-likebtn {
+  @apply w-8 flex items-center gap-1 bg-sky-100 rounded-md cursor-pointer p-1;
+}
+.activityItem-likebtn-icon {
+  @apply w-4 h-4 fill-rose-500;
+}
+
+.activityItem-likebtn-number {
+  @apply text-xs text-rose-600;
+}
+
+.hidden {
+  display: none !important;
+}

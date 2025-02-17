@@ -1,8 +1,34 @@
+document.addEventListener('DOMContentLoaded', function () {
+  // Initialize the saved username when the popup loads
+  chrome.storage.local.get(['username'], function (result) {
+    if (result.username) {
+      document.getElementById('usernameInput').value = result.username;
+      document.getElementById(
+        'currentUser'
+      ).textContent = `Welcome ${result.username}`;
+    } else {
+      document.getElementById('currentUser').textContent = `Set Username`;
+    }
+  });
+
+  // Event listener to save the username
+  document
+    .getElementById('setName')
+    .addEventListener('click', function (event) {
+      event.preventDefault();
+      const username = document.getElementById('usernameInput').value;
+
+      chrome.storage.local.set({ username: username }, function () {
+        document.getElementById('currentUser').textContent = username;
+      });
+    });
+});
+
 //this code is no longer in use, but I'm leaving it in in case
 //delete in final build
 
 //establish appwrite consts
-const client = new Client();
+/* const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -75,3 +101,4 @@ databases.listDocuments(
     })
 
 
+ */

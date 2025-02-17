@@ -1,19 +1,22 @@
 {
+  "name": "100devs-social-tracker",
+  "version": "1.0.0",
+  "description": "A simple Chrome extension social overlay for the 100Devs progress tracker at communitytaught.org. The idea is to replicate a social encouragement feature a la Duolingo to support each other's progress.",
+  "main": "main.js",
   "dependencies": {
+    "@tailwindcss/cli": "^4.0.6",
     "appwrite": "^17.0.0",
-    "extension-cli": "^1.2.4"
-  }
+    "extension-cli": "^1.2.4",
+    "tailwindcss": "^4.0.6"
+  },
   "babel": {
-  "presets": [
-    "@babel/preset-env"
-  ]
-}
-"scripts": {
-  "start": "xt-build -e dev -w",
-  "build": "xt-build -e prod",
-  "clean": "xt-clean",
-  "docs": "xt-docs",
-  "test": "xt-test",
-  "coverage": "nyc --reporter=lcov npm run test"
-}
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "scripts": {
+    "generate-css": "npx @tailwindcss/cli -i ./input.css -o ./style.css"
+  },
+  "author": "",
+  "license": "ISC"
 }
