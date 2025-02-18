@@ -6,7 +6,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/main.js-loader-C5jmNCiz.js"
+        "assets/main.js-loader-D2LCv_Ox.js"
       ],
       "matches": [
         "https://communitytaught.org/*"
@@ -28,7 +28,7 @@
         "https://communitytaught.org/*"
       ],
       "resources": [
-        "assets/main.js-DISC4mjZ.js"
+        "assets/main.js-CleSMlqU.js"
       ],
       "use_dynamic_url": false
     }

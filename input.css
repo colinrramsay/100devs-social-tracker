@@ -52,5 +52,9 @@
 }
 
 .hidden {
-  display: none !important;
+  display: none;
+}
+
+#latestActivity.hidden {
+  display: none;
 }

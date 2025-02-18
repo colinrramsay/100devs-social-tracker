@@ -121,6 +121,7 @@ watched.forEach((el) => el.addEventListener('change', addClassActivity));
 //add HW activity to database
 async function addHwActivity() {
   if (this.checked) {
+    await getUsername();
     try {
       const itemId = this.id;
       const label = document.querySelector(`label[for="${itemId}"]`);
@@ -151,6 +152,7 @@ async function addHwActivity() {
 //add class activity to database
 async function addClassActivity() {
   if (this.checked) {
+    await getUsername();
     try {
       const greatGrandparent = this.parentElement.parentElement.parentElement;
       const classNumber = greatGrandparent.querySelector('h3').innerText;
@@ -190,15 +192,3 @@ function getUsername() {
     }
   });
 }
-
-/*
-GARBAGE CODE
-
-//listen for username from extension popup
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    username = message;
-    localStorage.setItem("username", username);
-    console.log(message);
-});
-*/
