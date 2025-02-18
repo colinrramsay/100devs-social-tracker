@@ -27,9 +27,17 @@ To build:
 
 ## Features:
 -Set/change username from extension popup
+
 -Collapsible activity overlay showing latest 10 updates from feed
+
 -"Like" activity by clicking the heart next to any item
--Marking any homework item complete or any class "watched" adds an entry to the activity feed
+
+-Marking any homework item comple
+
+https://github.com/user-attachments/assets/f8f2b726-8d10-4760-b5a6-d64fc0b32077
+
+te or any class "watched" adds an entry to the activity feed
+
 -Activity feed refreshes from the db on page load and every minute
 
 ## Optimizations
