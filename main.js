@@ -1,5 +1,6 @@
 //set up appwrite consts
 const client = new Client();
+
 const PROJECT_ID = '67b12193000bc9718dfa';
 const DATABASE_ID = '67b125c20014e1f66505';
 const COLLECTION_ID = '67b125fb00368bb996e0';
