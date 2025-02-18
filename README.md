@@ -32,13 +32,11 @@ To build:
 
 -"Like" activity by clicking the heart next to any item
 
--Marking any homework item comple
-
-https://github.com/user-attachments/assets/f8f2b726-8d10-4760-b5a6-d64fc0b32077
-
-te or any class "watched" adds an entry to the activity feed
+-Marking any homework item complete or any class "watched" adds an entry to the activity feed
 
 -Activity feed refreshes from the db on page load and every minute
+
+https://github.com/user-attachments/assets/f8f2b726-8d10-4760-b5a6-d64fc0b32077
 
 ## Optimizations
 This extension is currently unfinished and hacked together with a lot of room for improvement. Proposed improvements, in no particular order:
