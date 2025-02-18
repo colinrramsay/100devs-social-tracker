@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "100Devs Social Overlay",
+  "version": "1.0",
+  "description": "a social layer for communitytaught.org",
+  "content_scripts": [
+    {
+      "js": [
+        "assets/main.js-loader-C5jmNCiz.js"
+      ],
+      "matches": [
+        "https://communitytaught.org/*"
+      ],
+      "css": [
+        "style.css"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://communitytaught.org/*"
+      ],
+      "resources": [
+        "assets/main.js-DISC4mjZ.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}

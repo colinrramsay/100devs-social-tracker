@@ -1,9 +1,10 @@
 //set up appwrite consts
-const client = new Client();
+import { Client, Account, Databases, ID, Query } from 'appwrite';
+export const client = new Client();
 
-const PROJECT_ID = '67b12193000bc9718dfa';
-const DATABASE_ID = '67b125c20014e1f66505';
-const COLLECTION_ID = '67b125fb00368bb996e0';
+const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
+const DATABASE_ID = import.meta.env.VITE_DATABASE_ID;
+const COLLECTION_ID = import.meta.env.VITE_COLLECTION_ID;
 
 client.setEndpoint('https://cloud.appwrite.io/v1').setProject(PROJECT_ID);
 
@@ -93,8 +94,10 @@ async function likeActivity() {
     `${this.id}` // documentId
   );
   const likes = doc.likes;
-  //add new like to array
-  likes.push(localStorage.getItem('username'));
+  //add new like to array, only if username hasn't already liked
+  getUsername()
+  if (!likes.includes(username)) {
+    likes.push(username);
   console.log(likes);
 
   //update document with updated array
@@ -105,6 +108,7 @@ async function likeActivity() {
     { likes: likes } // data (optional)
   );
   loadActivity();
+  }
 }
 
 //add event listener on checkboxes, callback adding doc to database
